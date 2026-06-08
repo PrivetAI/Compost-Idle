@@ -1,0 +1,372 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2A185E9C6EEC48E7B9677385 /* CompostIdleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657038ACF63F413D9F5B3AF3 /* CompostIdleApp.swift */; };
+		86DF671B66674DE5A968DE9A /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E278751BF54AD5B91E5503 /* RootView.swift */; };
+		FA47CD21E61D4CB6B8B95109 /* HeapEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE707B2D14094247B4EA4531 /* HeapEngine.swift */; };
+		26AE4F7CF7EF46DE89581309 /* HeapTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3260E8A7AC496F9446ADEC /* HeapTheme.swift */; };
+		CC9FD81AE1AA42AB898F0BDD /* HeapIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770DC2C38BAA4E1CA3F6CE39 /* HeapIcons.swift */; };
+		01EA933B745F4059A682DD25 /* HeapComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D48057C0F4069874E8D9A /* HeapComponents.swift */; };
+		80446C651A884C189D47EB06 /* ComposterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D11E6A5CF6543809C3BC04E /* ComposterView.swift */; };
+		45F38F124ABE4687BBAB9C76 /* GardenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A133767536440E08E57446A /* GardenView.swift */; };
+		7ADEB0AD0DA84A8D9C2EA005 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05F461631954826874CD220 /* ShopView.swift */; };
+		14FCA654191E4DCD973F5103 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3B9D7EDD4540CB93E5C6AE /* SettingsView.swift */; };
+		12C92668C6C74BA8813B8D9F /* CompostWebPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494951632FFC4CF7A4BEA261 /* CompostWebPanel.swift */; };
+		0E95E412A7A54AC7BC843069 /* CompostLoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE0897A80F946A68EB9DE8F /* CompostLoadingScreen.swift */; };
+		0B38F92B2B124B6296E354AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B217A0FE71EA485480222309 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6D6ADEB56618485C88AA8ADA /* Compost Idle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Compost Idle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		657038ACF63F413D9F5B3AF3 /* CompostIdleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompostIdleApp.swift; sourceTree = "<group>"; };
+		05E278751BF54AD5B91E5503 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		FE707B2D14094247B4EA4531 /* HeapEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeapEngine.swift; sourceTree = "<group>"; };
+		9B3260E8A7AC496F9446ADEC /* HeapTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeapTheme.swift; sourceTree = "<group>"; };
+		770DC2C38BAA4E1CA3F6CE39 /* HeapIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeapIcons.swift; sourceTree = "<group>"; };
+		405D48057C0F4069874E8D9A /* HeapComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeapComponents.swift; sourceTree = "<group>"; };
+		7D11E6A5CF6543809C3BC04E /* ComposterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposterView.swift; sourceTree = "<group>"; };
+		9A133767536440E08E57446A /* GardenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenView.swift; sourceTree = "<group>"; };
+		E05F461631954826874CD220 /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
+		4B3B9D7EDD4540CB93E5C6AE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		494951632FFC4CF7A4BEA261 /* CompostWebPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompostWebPanel.swift; sourceTree = "<group>"; };
+		DFE0897A80F946A68EB9DE8F /* CompostLoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompostLoadingScreen.swift; sourceTree = "<group>"; };
+		B217A0FE71EA485480222309 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		88A560A9F1674969ACD855B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9B2B8F16BF2943D5BF155C64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7340CE33456D42A49D1BEB04 = {
+			isa = PBXGroup;
+			children = (
+				F42DDC9455D54127A6DE54A9 /* CompostIdle */,
+				381541F7E2BC430985AE171E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		381541F7E2BC430985AE171E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6D6ADEB56618485C88AA8ADA /* Compost Idle.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F42DDC9455D54127A6DE54A9 /* CompostIdle */ = {
+			isa = PBXGroup;
+			children = (
+				657038ACF63F413D9F5B3AF3 /* CompostIdleApp.swift */,
+				05E278751BF54AD5B91E5503 /* RootView.swift */,
+				FE707B2D14094247B4EA4531 /* HeapEngine.swift */,
+				9B3260E8A7AC496F9446ADEC /* HeapTheme.swift */,
+				770DC2C38BAA4E1CA3F6CE39 /* HeapIcons.swift */,
+				405D48057C0F4069874E8D9A /* HeapComponents.swift */,
+				7D11E6A5CF6543809C3BC04E /* ComposterView.swift */,
+				9A133767536440E08E57446A /* GardenView.swift */,
+				E05F461631954826874CD220 /* ShopView.swift */,
+				4B3B9D7EDD4540CB93E5C6AE /* SettingsView.swift */,
+				494951632FFC4CF7A4BEA261 /* CompostWebPanel.swift */,
+				DFE0897A80F946A68EB9DE8F /* CompostLoadingScreen.swift */,
+				B217A0FE71EA485480222309 /* Assets.xcassets */,
+				88A560A9F1674969ACD855B8 /* Info.plist */,
+			);
+			path = CompostIdle;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5DCB3ACBDF77485ABFCD1D75 /* Compost Idle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B385CD751D9F4243A024F291 /* Build configuration list for PBXNativeTarget "Compost Idle" */;
+			buildPhases = (
+				410EA79E1FAF445783BEF8D8 /* Sources */,
+				9B2B8F16BF2943D5BF155C64 /* Frameworks */,
+				D93C30F4D6354919AEE4238F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Compost Idle";
+			productName = "Compost Idle";
+			productReference = 6D6ADEB56618485C88AA8ADA /* Compost Idle.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6EA6D06010844537A866432B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					5DCB3ACBDF77485ABFCD1D75 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 918C4431E0A642BEB366B791 /* Build configuration list for PBXProject "Compost Idle" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7340CE33456D42A49D1BEB04;
+			productRefGroup = 381541F7E2BC430985AE171E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5DCB3ACBDF77485ABFCD1D75 /* Compost Idle */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D93C30F4D6354919AEE4238F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B38F92B2B124B6296E354AA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		410EA79E1FAF445783BEF8D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A185E9C6EEC48E7B9677385 /* CompostIdleApp.swift in Sources */,
+				86DF671B66674DE5A968DE9A /* RootView.swift in Sources */,
+				FA47CD21E61D4CB6B8B95109 /* HeapEngine.swift in Sources */,
+				26AE4F7CF7EF46DE89581309 /* HeapTheme.swift in Sources */,
+				CC9FD81AE1AA42AB898F0BDD /* HeapIcons.swift in Sources */,
+				01EA933B745F4059A682DD25 /* HeapComponents.swift in Sources */,
+				80446C651A884C189D47EB06 /* ComposterView.swift in Sources */,
+				45F38F124ABE4687BBAB9C76 /* GardenView.swift in Sources */,
+				7ADEB0AD0DA84A8D9C2EA005 /* ShopView.swift in Sources */,
+				14FCA654191E4DCD973F5103 /* SettingsView.swift in Sources */,
+				12C92668C6C74BA8813B8D9F /* CompostWebPanel.swift in Sources */,
+				0E95E412A7A54AC7BC843069 /* CompostLoadingScreen.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		19E21A154F1440AFABBA6682 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7ADEB0AD0DA84A8D9C2EA006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A1A1A1A1A1A1A1A1A1A1A1A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = CompostIdle/Info.plist;
+				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.privetai.compostidle";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A2A2A2A2A2A2A2A2A2A2A2A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGNING_ALLOWED = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = CompostIdle/Info.plist;
+				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.privetai.compostidle";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		918C4431E0A642BEB366B791 /* Build configuration list for PBXProject "Compost Idle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19E21A154F1440AFABBA6682 /* Debug */,
+				7ADEB0AD0DA84A8D9C2EA006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B385CD751D9F4243A024F291 /* Build configuration list for PBXNativeTarget "Compost Idle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1A1A1A1A1A1A1A1A1A1A1A1 /* Debug */,
+				A2A2A2A2A2A2A2A2A2A2A2A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6EA6D06010844537A866432B /* Project object */;
+}
