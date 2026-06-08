@@ -85,7 +85,7 @@
 				B217A0FE71EA485480222309 /* Assets.xcassets */,
 				88A560A9F1674969ACD855B8 /* Info.plist */,
 			);
-			path = CompostIdle;
+			path = "Compost Idle";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,7 +292,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = CompostIdle/Info.plist;
+				INFOPLIST_FILE = "Compost Idle/Info.plist";
 				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -325,7 +325,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
-				INFOPLIST_FILE = CompostIdle/Info.plist;
+				INFOPLIST_FILE = "Compost Idle/Info.plist";
 				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
