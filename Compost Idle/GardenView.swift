@@ -55,6 +55,9 @@ struct GardenView: View {
                     miniStat(icon: AnyView(CoinIcon(size: 16)), text: "\(HeapFormat.short(sel.baseValue * engine.cashMultiplier))")
                     miniStat(icon: AnyView(LeafIcon(size: 16)), text: HeapFormat.time(engine.plotGrowSeconds(sel.id)))
                 }
+                Text("\(sel.note.capitalized). Harvested \(engine.harvestCount(for: sel.id)) times.")
+                    .font(.system(size: 12, weight: .semibold, design: .rounded))
+                    .foregroundColor(HeapTheme.textSoft)
             }
         }
     }
@@ -124,7 +127,7 @@ struct GardenView: View {
                         .scaleEffect(poppedPlot == i ? 1.12 : 1.0)
                 }
             }
-            Text("Plot \(i + 1)")
+            Text(HeapCatalog.plotName(i))
                 .font(.system(size: 13, weight: .bold, design: .rounded))
                 .foregroundColor(HeapTheme.text)
             if empty {
@@ -155,7 +158,7 @@ struct GardenView: View {
                 .fill(HeapTheme.panel.opacity(0.5))
                 .frame(height: 78)
                 .overlay(GardenIcon(size: 36, color: HeapTheme.divider))
-            Text("Plot \(i + 1)")
+            Text(HeapCatalog.plotName(i))
                 .font(.system(size: 13, weight: .bold, design: .rounded))
                 .foregroundColor(HeapTheme.textSoft)
             if isNext, let cost = cost {

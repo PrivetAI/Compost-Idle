@@ -6,35 +6,110 @@ import Combine
 struct PlantType: Identifiable {
     let id: Int
     let name: String
+    let note: String
     let soilCost: Double      // soil spent to plant
     let growSeconds: Double   // base time to mature
     let baseValue: Double     // cash on harvest (before multipliers)
     let unlockCost: Double    // one-time cash to unlock
 }
 
+struct CompostContract: Identifiable {
+    let id: Int
+    let title: String
+    let plantTypeId: Int
+    let requiredHarvests: Int
+    let cashReward: Double
+    let soilReward: Double
+}
+
+struct HeapAchievement: Identifiable {
+    let id: Int
+    let title: String
+    let detail: String
+    let isComplete: (HeapEngine) -> Bool
+}
+
 enum HeapCatalog {
     // Premium plant types — later ones are worth far more but cost more soil/time.
     static let plants: [PlantType] = [
-        PlantType(id: 0, name: "Radish",   soilCost: 8,    growSeconds: 12,  baseValue: 6,     unlockCost: 0),
-        PlantType(id: 1, name: "Lettuce",  soilCost: 22,   growSeconds: 20,  baseValue: 20,    unlockCost: 120),
-        PlantType(id: 2, name: "Tomato",   soilCost: 65,   growSeconds: 34,  baseValue: 75,    unlockCost: 900),
-        PlantType(id: 3, name: "Pumpkin",  soilCost: 220,  growSeconds: 55,  baseValue: 320,   unlockCost: 6500),
-        PlantType(id: 4, name: "Sunflower",soilCost: 800,  growSeconds: 80,  baseValue: 1500,  unlockCost: 48000),
-        PlantType(id: 5, name: "Orchard",  soilCost: 3200, growSeconds: 120, baseValue: 7200,  unlockCost: 380000)
+        PlantType(id: 0, name: "Radish",    note: "quick starter crop", soilCost: 8,     growSeconds: 12,  baseValue: 6,      unlockCost: 0),
+        PlantType(id: 1, name: "Lettuce",   note: "steady salad cash",   soilCost: 22,    growSeconds: 20,  baseValue: 20,     unlockCost: 120),
+        PlantType(id: 2, name: "Carrot",    note: "cheap root bundles",  soilCost: 45,    growSeconds: 28,  baseValue: 48,     unlockCost: 420),
+        PlantType(id: 3, name: "Tomato",    note: "market favorite",     soilCost: 85,    growSeconds: 36,  baseValue: 95,     unlockCost: 1100),
+        PlantType(id: 4, name: "Pepper",    note: "spicy premium crop",  soilCost: 160,   growSeconds: 48,  baseValue: 210,    unlockCost: 3500),
+        PlantType(id: 5, name: "Pumpkin",   note: "big autumn payout",   soilCost: 320,   growSeconds: 65,  baseValue: 480,    unlockCost: 11000),
+        PlantType(id: 6, name: "Sunflower", note: "golden seed heads",   soilCost: 720,   growSeconds: 90,  baseValue: 1250,   unlockCost: 42000),
+        PlantType(id: 7, name: "Blueberry", note: "slow berry crates",   soilCost: 1500,  growSeconds: 115, baseValue: 3200,   unlockCost: 140000),
+        PlantType(id: 8, name: "Lavender",  note: "fragrant bundles",    soilCost: 3400,  growSeconds: 145, baseValue: 8200,   unlockCost: 520000),
+        PlantType(id: 9, name: "Mushroom",  note: "dark heap delicacy",  soilCost: 7800,  growSeconds: 175, baseValue: 21000,  unlockCost: 1900000),
+        PlantType(id: 10, name: "Melon",    note: "heavy summer haul",   soilCost: 18000, growSeconds: 220, baseValue: 54000,  unlockCost: 7500000),
+        PlantType(id: 11, name: "Orchard",  note: "late-game grove",     soilCost: 42000, growSeconds: 280, baseValue: 145000, unlockCost: 30000000)
     ]
 
     // Worm tiers multiply soil output of every bin.
     static let wormTiers: [(name: String, mult: Double, cost: Double)] = [
-        ("Garden Worms",   1.0,  0),
-        ("Red Wigglers",   1.6,  450),
-        ("Tiger Worms",    2.6,  4200),
-        ("Blue Worms",     4.2,  41000),
-        ("Nightcrawlers",  7.0,  420000),
-        ("Composting Kings", 12.0, 4200000)
+        ("Garden Worms",       1.0,  0),
+        ("Red Wigglers",       1.6,  450),
+        ("Tiger Worms",        2.6,  4200),
+        ("Blue Worms",         4.2,  41000),
+        ("Nightcrawlers",      7.0,  420000),
+        ("Composting Kings",   12.0, 4200000),
+        ("Soil Alchemists",    20.0, 42000000),
+        ("Mycelium Network",   34.0, 420000000),
+        ("Earth Shapers",      58.0, 4200000000)
     ]
 
-    static let maxBins = 6
-    static let maxPlots = 6
+    static let contracts: [CompostContract] = [
+        CompostContract(id: 0, title: "Cafe Salad Box", plantTypeId: 1, requiredHarvests: 6, cashReward: 180, soilReward: 30),
+        CompostContract(id: 1, title: "Root Cellar Restock", plantTypeId: 2, requiredHarvests: 8, cashReward: 720, soilReward: 80),
+        CompostContract(id: 2, title: "Sauce Stand Rush", plantTypeId: 3, requiredHarvests: 10, cashReward: 2600, soilReward: 180),
+        CompostContract(id: 3, title: "Spicy Market Day", plantTypeId: 4, requiredHarvests: 10, cashReward: 8500, soilReward: 420),
+        CompostContract(id: 4, title: "Harvest Festival", plantTypeId: 5, requiredHarvests: 12, cashReward: 32000, soilReward: 1000),
+        CompostContract(id: 5, title: "Birdseed Co-op", plantTypeId: 6, requiredHarvests: 14, cashReward: 130000, soilReward: 2400),
+        CompostContract(id: 6, title: "Bakery Berry Crates", plantTypeId: 7, requiredHarvests: 16, cashReward: 520000, soilReward: 5800),
+        CompostContract(id: 7, title: "Apothecary Bundle", plantTypeId: 8, requiredHarvests: 18, cashReward: 2200000, soilReward: 14000),
+        CompostContract(id: 8, title: "Chef's Mushroom Run", plantTypeId: 9, requiredHarvests: 20, cashReward: 9200000, soilReward: 34000),
+        CompostContract(id: 9, title: "Summer Fair Melons", plantTypeId: 10, requiredHarvests: 22, cashReward: 38000000, soilReward: 85000),
+        CompostContract(id: 10, title: "Cider Orchard Reserve", plantTypeId: 11, requiredHarvests: 24, cashReward: 165000000, soilReward: 210000)
+    ]
+
+    static let achievements: [HeapAchievement] = [
+        HeapAchievement(id: 0, title: "First Sale", detail: "Earn 100 lifetime cash") { $0.lifetimeCash >= 100 },
+        HeapAchievement(id: 1, title: "Bin Row", detail: "Unlock 4 composter bins") { $0.unlockedBinCount >= 4 },
+        HeapAchievement(id: 2, title: "Garden Patch", detail: "Unlock 4 garden plots") { $0.unlockedPlotCount >= 4 },
+        HeapAchievement(id: 3, title: "Worm Wrangler", detail: "Reach Tiger Worms") { $0.wormTier >= 2 },
+        HeapAchievement(id: 4, title: "Crop Collector", detail: "Unlock 6 crops") { $0.unlockedPlants.count >= 6 },
+        HeapAchievement(id: 5, title: "Market Regular", detail: "Complete 3 market orders") { $0.completedContractCount >= 3 },
+        HeapAchievement(id: 6, title: "Busy Harvester", detail: "Harvest 100 crops") { $0.lifetimeHarvestCount >= 100 },
+        HeapAchievement(id: 7, title: "Automation Age", detail: "Buy the Auto-Harvester") { $0.autoHarvest },
+        HeapAchievement(id: 8, title: "Turned Soil", detail: "Turn the heap once") { $0.totalHeapTurns >= 1 },
+        HeapAchievement(id: 9, title: "Compost Tycoon", detail: "Earn 10M lifetime cash") { $0.lifetimeCash >= 10000000 }
+    ]
+
+    static let binNames = [
+        "Kitchen Scraps", "Coffee Grounds", "Leaf Mulch", "Fruit Peels", "Grass Clippings",
+        "Bakery Waste", "Tea Leaves", "Market Scraps", "Mushroom Log"
+    ]
+
+    static let plotNames = [
+        "Starter Bed", "Sunny Row", "Herb Patch", "Root Bed", "Vine Row",
+        "Flower Corner", "Berry Frame", "Shade Bed", "Orchard Strip"
+    ]
+
+    static let maxBins = 9
+    static let maxPlots = 9
+
+    static func binName(_ index: Int) -> String {
+        index < binNames.count ? binNames[index] : "Bin \(index + 1)"
+    }
+
+    static func plotName(_ index: Int) -> String {
+        index < plotNames.count ? plotNames[index] : "Plot \(index + 1)"
+    }
+
+    static func plantName(_ id: Int) -> String {
+        plants.first(where: { $0.id == id })?.name ?? "Crop"
+    }
 }
 
 // MARK: - Bin model (waste -> soil over time)
@@ -78,6 +153,8 @@ final class HeapEngine: ObservableObject {
 
     // Lifetime stats
     @Published var lifetimeCash: Double = 0
+    @Published var cropHarvestCounts: [Int: Int] = [:]
+    @Published var completedContracts: Set<Int> = []
 
     private var timer: AnyCancellable?
     private let tickInterval: Double = 0.1
@@ -97,6 +174,7 @@ final class HeapEngine: ObservableObject {
         if plots.isEmpty {
             plots = (0..<HeapCatalog.maxPlots).map { PlotState(unlocked: $0 == 0, plantTypeId: -1, progress: 0) }
         }
+        normalizeLoadedState()
         creditOffline()
         startTimer()
     }
@@ -114,6 +192,11 @@ final class HeapEngine: ObservableObject {
 
     var unlockedBinCount: Int { bins.filter { $0.unlocked }.count }
     var unlockedPlotCount: Int { plots.filter { $0.unlocked }.count }
+    var completedContractCount: Int { completedContracts.count }
+    var lifetimeHarvestCount: Int { cropHarvestCounts.values.reduce(0, +) }
+    var completedAchievementCount: Int {
+        HeapCatalog.achievements.filter { $0.isComplete(self) }.count
+    }
 
     func binSecondsPerBatch() -> Double {
         max(0.4, baseBinSeconds / decompMultiplier)
@@ -222,6 +305,24 @@ final class HeapEngine: ObservableObject {
         }
     }
 
+    func harvestCount(for plantTypeId: Int) -> Int {
+        cropHarvestCounts[plantTypeId, default: 0]
+    }
+
+    func canCompleteContract(_ contract: CompostContract) -> Bool {
+        !completedContracts.contains(contract.id)
+            && harvestCount(for: contract.plantTypeId) >= contract.requiredHarvests
+    }
+
+    func completeContract(_ contract: CompostContract) {
+        guard canCompleteContract(contract) else { return }
+        completedContracts.insert(contract.id)
+        cash += contract.cashReward
+        soil += contract.soilReward
+        lifetimeCash += contract.cashReward
+        save()
+    }
+
     func selectPlant(_ id: Int) {
         guard unlockedPlants.contains(id) else { return }
         selectedPlantId = id
@@ -262,6 +363,7 @@ final class HeapEngine: ObservableObject {
         let earned = t.baseValue * cashMultiplier
         cash += earned
         lifetimeCash += earned
+        cropHarvestCounts[typeId, default: 0] += 1
         plots[index].plantTypeId = -1
         plots[index].progress = 0
         save()
@@ -341,6 +443,7 @@ final class HeapEngine: ObservableObject {
                 let earned = t.baseValue * cashMultiplier
                 cash += earned
                 lifetimeCash += earned
+                cropHarvestCounts[typeId, default: 0] += 1
                 plots[i].plantTypeId = -1
                 plots[i].progress = 0
             } else {
@@ -381,6 +484,8 @@ final class HeapEngine: ObservableObject {
         var selectedPlantId: Int
         var unlockedPlants: [Int]
         var lifetimeCash: Double
+        var cropHarvestCounts: [Int: Int]?
+        var completedContracts: [Int]?
     }
 
     func save() {
@@ -389,7 +494,8 @@ final class HeapEngine: ObservableObject {
             decompLevel: decompLevel, yieldLevel: yieldLevel, growthLevel: growthLevel,
             wormTier: wormTier, autoHarvest: autoHarvest, bins: bins, plots: plots,
             selectedPlantId: selectedPlantId, unlockedPlants: Array(unlockedPlants),
-            lifetimeCash: lifetimeCash)
+            lifetimeCash: lifetimeCash, cropHarvestCounts: cropHarvestCounts,
+            completedContracts: Array(completedContracts))
         if let encoded = try? JSONEncoder().encode(data) {
             UserDefaults.standard.set(encoded, forKey: defaultsKey)
         }
@@ -412,6 +518,32 @@ final class HeapEngine: ObservableObject {
         selectedPlantId = data.selectedPlantId
         unlockedPlants = Set(data.unlockedPlants)
         lifetimeCash = data.lifetimeCash
+        cropHarvestCounts = data.cropHarvestCounts ?? [:]
+        completedContracts = Set(data.completedContracts ?? [])
+    }
+
+    private func normalizeLoadedState() {
+        if bins.count < HeapCatalog.maxBins {
+            bins.append(contentsOf: (bins.count..<HeapCatalog.maxBins).map { _ in BinState(unlocked: false, progress: 0) })
+        }
+        if plots.count < HeapCatalog.maxPlots {
+            plots.append(contentsOf: (plots.count..<HeapCatalog.maxPlots).map { _ in PlotState(unlocked: false, plantTypeId: -1, progress: 0) })
+        }
+        if bins.allSatisfy({ !$0.unlocked }) {
+            bins[0].unlocked = true
+        }
+        if plots.allSatisfy({ !$0.unlocked }) {
+            plots[0].unlocked = true
+        }
+        let validPlantIds = Set(HeapCatalog.plants.map(\.id))
+        unlockedPlants = unlockedPlants.intersection(validPlantIds)
+        unlockedPlants.insert(0)
+        if !unlockedPlants.contains(selectedPlantId) {
+            selectedPlantId = 0
+        }
+        wormTier = min(max(0, wormTier), HeapCatalog.wormTiers.count - 1)
+        completedContracts = completedContracts.intersection(Set(HeapCatalog.contracts.map(\.id)))
+        cropHarvestCounts = cropHarvestCounts.filter { validPlantIds.contains($0.key) }
     }
 
     // Stamp last-active ONLY on background (see RootView scenePhase handling).

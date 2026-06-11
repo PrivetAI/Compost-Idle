@@ -64,9 +64,11 @@ struct ComposterView: View {
                     VStack(spacing: 10) {
                         BinIcon(size: 64, color: HeapTheme.soil)
                             .scaleEffect(poppedBin == i ? 1.12 : 1.0)
-                        Text("Bin \(i + 1)")
+                        Text(HeapCatalog.binName(i))
                             .font(.system(size: 14, weight: .bold, design: .rounded))
                             .foregroundColor(HeapTheme.text)
+                            .multilineTextAlignment(.center)
+                            .lineLimit(2)
                         HeapProgressBar(progress: bin.progress, fill: HeapTheme.waste)
                         Text("Tap to turn")
                             .font(.system(size: 11, weight: .semibold, design: .rounded))
@@ -91,9 +93,11 @@ struct ComposterView: View {
         let isNext = engine.bins.firstIndex(where: { !$0.unlocked }) == i
         return VStack(spacing: 10) {
             BinIcon(size: 64, color: HeapTheme.divider)
-            Text("Bin \(i + 1)")
+            Text(HeapCatalog.binName(i))
                 .font(.system(size: 14, weight: .bold, design: .rounded))
                 .foregroundColor(HeapTheme.textSoft)
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
             if isNext, let cost = cost {
                 Button(action: { engine.buyBin() }) {
                     HStack(spacing: 5) {

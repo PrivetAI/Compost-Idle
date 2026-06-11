@@ -12,6 +12,7 @@ struct ShopView: View {
                     speedSection
                     wormSection
                     plantSection
+                    contractSection
                     prestigeSection
                 }
                 .padding(16)
@@ -127,7 +128,7 @@ struct ShopView: View {
                 if !engine.unlockedPlants.contains(p.id) {
                     HeapActionButton(
                         title: "Unlock \(p.name)",
-                        subtitle: "Worth \(HeapFormat.short(p.baseValue * engine.cashMultiplier)) each",
+                        subtitle: "\(p.note) · worth \(HeapFormat.short(p.baseValue * engine.cashMultiplier))",
                         costText: HeapFormat.short(p.unlockCost),
                         enabled: engine.cash >= p.unlockCost && prevUnlocked(p.id),
                         tint: HeapTheme.leaf,
@@ -144,6 +145,68 @@ struct ShopView: View {
     private func prevUnlocked(_ id: Int) -> Bool {
         if id == 0 { return true }
         return engine.unlockedPlants.contains(id - 1)
+    }
+
+    // MARK: Market orders
+
+    private var contractSection: some View {
+        HeapCard {
+            HeapSectionHeader(title: "Market Orders", icon: AnyView(CoinIcon(size: 22)))
+            Text("Harvest crops to fill one-time orders. Completed orders pay cash and a soil bonus.")
+                .font(.system(size: 13, weight: .medium, design: .rounded))
+                .foregroundColor(HeapTheme.textSoft)
+            ForEach(HeapCatalog.contracts) { contract in
+                contractRow(contract)
+            }
+        }
+    }
+
+    private func contractRow(_ contract: CompostContract) -> some View {
+        let completed = engine.completedContracts.contains(contract.id)
+        let progress = min(engine.harvestCount(for: contract.plantTypeId), contract.requiredHarvests)
+        let ready = engine.canCompleteContract(contract)
+        return VStack(alignment: .leading, spacing: 7) {
+            HStack(alignment: .top, spacing: 10) {
+                PlantGrowthIcon(size: 34, progress: completed ? 1.0 : Double(progress) / Double(contract.requiredHarvests), typeId: contract.plantTypeId)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(contract.title)
+                        .font(.system(size: 14, weight: .heavy, design: .rounded))
+                        .foregroundColor(HeapTheme.text)
+                    Text("\(progress) / \(contract.requiredHarvests) \(HeapCatalog.plantName(contract.plantTypeId)) harvested")
+                        .font(.system(size: 12, weight: .medium, design: .rounded))
+                        .foregroundColor(HeapTheme.textSoft)
+                }
+                Spacer(minLength: 8)
+                if completed {
+                    Text("Done")
+                        .font(.system(size: 12, weight: .heavy, design: .rounded))
+                        .foregroundColor(HeapTheme.leafDark)
+                        .padding(.horizontal, 10).padding(.vertical, 7)
+                        .background(HeapTheme.leaf.opacity(0.16))
+                        .cornerRadius(10)
+                } else {
+                    Button(action: { engine.completeContract(contract) }) {
+                        VStack(spacing: 2) {
+                            Text(ready ? "Collect" : "Reward")
+                                .font(.system(size: 12, weight: .heavy, design: .rounded))
+                            Text("+\(HeapFormat.short(contract.cashReward))")
+                                .font(.system(size: 12, weight: .bold, design: .rounded))
+                        }
+                        .foregroundColor(ready ? HeapTheme.cardBackground : HeapTheme.textSoft)
+                        .padding(.horizontal, 10).padding(.vertical, 7)
+                        .background(ready ? HeapTheme.leafDark : HeapTheme.divider.opacity(0.45))
+                        .cornerRadius(10)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .disabled(!ready)
+                }
+            }
+            HeapProgressBar(progress: Double(progress) / Double(contract.requiredHarvests), fill: completed ? HeapTheme.leafDark : HeapTheme.gold, height: 8)
+        }
+        .padding(.horizontal, 12).padding(.vertical, 10)
+        .background(HeapTheme.panel.opacity(completed ? 0.30 : 0.45))
+        .cornerRadius(13)
+        .overlay(RoundedRectangle(cornerRadius: 13).stroke(completed ? HeapTheme.leaf.opacity(0.45) : HeapTheme.divider, lineWidth: 1))
     }
 
     // MARK: Prestige

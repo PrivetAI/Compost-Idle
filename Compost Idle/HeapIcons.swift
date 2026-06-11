@@ -164,9 +164,15 @@ struct PlantGrowthIcon: View {
                 let crownColors: [Color] = [
                     Color(red: 0.80, green: 0.30, blue: 0.30),  // radish
                     Color(red: 0.40, green: 0.62, blue: 0.30),  // lettuce
+                    Color(red: 0.88, green: 0.42, blue: 0.14),  // carrot
                     Color(red: 0.84, green: 0.28, blue: 0.20),  // tomato
+                    Color(red: 0.72, green: 0.20, blue: 0.14),  // pepper
                     Color(red: 0.88, green: 0.52, blue: 0.16),  // pumpkin
                     Color(red: 0.92, green: 0.74, blue: 0.18),  // sunflower
+                    Color(red: 0.24, green: 0.34, blue: 0.72),  // blueberry
+                    Color(red: 0.58, green: 0.42, blue: 0.78),  // lavender
+                    Color(red: 0.70, green: 0.58, blue: 0.46),  // mushroom
+                    Color(red: 0.34, green: 0.62, blue: 0.30),  // melon
                     Color(red: 0.66, green: 0.30, blue: 0.55)   // orchard
                 ]
                 let c = crownColors[max(0, min(crownColors.count-1, typeId))]
